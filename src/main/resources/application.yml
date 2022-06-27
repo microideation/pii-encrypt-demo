@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+  application:
+    name: pii-encrypt-demo
+    version: ^project.version^
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pii-encrypt-demo?zeroDateTimeBehavior=convertToNull
+    username: root
+    password: virtual
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      naming:
+        strategy: org.hibernate.cfg.EJB3NamingStrategy
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    generate-ddl: true
+    show-sql: false
+
+server:
+  context-path: /pii-encrypt-demo
+  port: 8080
