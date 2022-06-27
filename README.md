@@ -9,6 +9,12 @@ A Spring Boot based project that showcases the options to do columnar encryption
 - Spring boot ( 1.5.21 ) or later
 - JPA 
 
+## Configuration & Setup
+- Create a database `pii-encrypt-demo`
+- Update the host, username and password for db in the `application.yml`.
+- Run the application
+- Use the Postman collection to save and get data 
+
 ## Steps
 1. Define an `AttributeConverter` ( `PIIAttributeConverter`) that will convert the string to encrypted value during save to database and decrypt when reading from database.
 2. Annotate the fields to be encrypted using `@Convert(converter = PIIAttributeConverter.class)`
