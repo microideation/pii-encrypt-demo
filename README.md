@@ -40,6 +40,10 @@ Standard repository class with necessary repo methods for retireval
 - https://www.getpostman.com/collections/978217caca8f6e5f37b3
 ## MySQL queries 
 ```SQL 
+-- Encrypt existing field 
+update CUSTOMERS set name=cast(to_base64(aes_encrypt(name,"secret-key-12345")) as char) where id = 10;
+
+-- Decrypt and select
  SELECT id,name,mobile,
  cast(aes_decrypt(from_base64(name),"secret-key-12345") as char) as 'Decrypted Name',
  cast(aes_decrypt(from_base64(mobile),"secret-key-12345") as char) as 'Decrypted Mobile' FROM `pii-encrypt-demo`.CUSTOMERS;
